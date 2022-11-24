@@ -11,6 +11,10 @@ export const router = createBrowserRouter([
     errorElement: <DisplayError></DisplayError>,
     children: [
       {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
         path: "/home",
         element: <Home></Home>,
       },
