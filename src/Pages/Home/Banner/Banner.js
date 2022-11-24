@@ -13,9 +13,9 @@ const Banner = () => {
           <h1 className="mb-5 text-6xl font-bold text-white ">
             Explore Our Range of Bikes
           </h1>
-          <p className="mb-5 text-md text-white">
-            Can't affort a new bike? We are here to offer range of bikes
-            depending upon out clients need.
+          <p className="mb-5  text-white w-3/4 mx-auto">
+            Can't affort a new bike? We are here to offer range of second hand
+            bikes depending upon out clients need.
           </p>
           <button className="btn bg-red-800 text-white btn-lg">Explore</button>
         </div>
