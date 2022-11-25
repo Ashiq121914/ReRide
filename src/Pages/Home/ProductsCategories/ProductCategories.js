@@ -13,7 +13,10 @@ const ProductCategories = () => {
     },
   });
   return (
-    <div>
+    <div className="my-20">
+      <div>
+        <h2 className="text-3xl text-center mb-20">Categories</h2>
+      </div>
       <Link
         to="/categoryProducts"
         className="grid lg:grid-cols-3 w-4/5 mx-auto gap-8"
