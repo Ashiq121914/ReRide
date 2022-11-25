@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
 import toast from "react-hot-toast";
@@ -9,6 +9,8 @@ const SignUp = () => {
   const { createUser, updateUser } = useContext(AuthContext);
   const [signUpError, setSignUpError] = useState("");
 
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -16,19 +18,22 @@ const SignUp = () => {
   } = useForm();
 
   const handleSignup = (data) => {
-    createUser(data.email, data.password).then((result) => {
-      const user = result.user;
-      console.log(user);
-      toast.success("user created successfully");
-      const userInfo = {
-        displayName: data.name,
-      };
-      updateUser(userInfo)
-        .then(() => {
-          saveUser(data.name, data.email, data.userType);
-        })
-        .catch((error) => setSignUpError(error.message));
-    });
+    createUser(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("user created successfully");
+        const userInfo = {
+          displayName: data.name,
+        };
+        updateUser(userInfo)
+          .then(() => {
+            saveUser(data.name, data.email, data.userType);
+            navigate("/");
+          })
+          .catch((error) => setSignUpError(error.message));
+      })
+      .catch((error) => setSignUpError(error.message));
   };
 
   // for sending the user data in the database
@@ -131,6 +136,7 @@ const SignUp = () => {
             type="submit"
           />
         </form>
+        <div>{signUpError && <p className="text-error">{signUpError}</p>}</div>
         <p>
           Already have an account?{" "}
           <Link to="/login" className="text-white underline">
