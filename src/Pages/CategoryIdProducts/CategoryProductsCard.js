@@ -1,5 +1,5 @@
 import React from "react";
-
+import { MdOutlineVerified } from "react-icons/md";
 const CategoryProductsCard = ({ categoryProduct }) => {
   const {
     image,
@@ -17,7 +17,7 @@ const CategoryProductsCard = ({ categoryProduct }) => {
     description,
   } = categoryProduct;
   return (
-    <div className="card lg:card-side bg-base-100 shadow-xl">
+    <div className="card lg:card-side bg-base-100 shadow-xl my-20">
       <figure>
         <img src={image} alt="Album" />
       </figure>
@@ -28,7 +28,12 @@ const CategoryProductsCard = ({ categoryProduct }) => {
         <p>{origianal_price}</p>
         <p>{years_of_use}</p>
         <p>{post_time}</p>
-        <p>{seller_name}</p>
+        <p className=" mb-5">
+          {seller_name}{" "}
+          {seller_verified && (
+            <MdOutlineVerified className="bg-green-700 inline text-white text-xl ml-1"></MdOutlineVerified>
+          )}
+        </p>
 
         <div className="card-actions justify-center">
           <button className="btn btn-primary">Book Now</button>
