@@ -8,9 +8,13 @@ import {
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 
 export const AuthContext = createContext();
+// for google sign in
+const googleProvider = new GoogleAuthProvider();
 
 const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
@@ -38,6 +42,11 @@ const AuthProvider = ({ children }) => {
     return updateProfile(auth.currentUser, userInfo);
   };
 
+  //for google
+  const googleSignin = () => {
+    return signInWithPopup(auth, googleProvider);
+  };
+
   // for current user: observer
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -55,6 +64,7 @@ const AuthProvider = ({ children }) => {
     updateUser,
     user,
     loading,
+    googleSignin,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

@@ -1,15 +1,19 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
 import toast from "react-hot-toast";
 
 const SignUp = () => {
-  const { createUser, updateUser } = useContext(AuthContext);
+  const { createUser, updateUser, googleSignin } = useContext(AuthContext);
   const [signUpError, setSignUpError] = useState("");
 
+  // to redirect in the right page
+  const location = useLocation();
   const navigate = useNavigate();
+
+  const from = location.state?.from?.pathname || "/";
 
   const {
     register,
@@ -50,6 +54,17 @@ const SignUp = () => {
       .then((data) => {
         console.log(data);
       });
+  };
+
+  // for google
+  const hangleGoogleSignIn = () => {
+    googleSignin()
+      .then((result) => {
+        const user = result.user;
+        saveUser(user.displayName, user.email, "user");
+        navigate("/");
+      })
+      .catch((error) => setSignUpError(error.message));
   };
   return (
     <div className="h-[800px] flex justify-center items-center">
@@ -144,7 +159,10 @@ const SignUp = () => {
           </Link>
         </p>
         <div className="divider">OR</div>
-        <button className="btn  btn-success btn-outline w-full">
+        <button
+          onClick={hangleGoogleSignIn}
+          className="btn  btn-success btn-outline w-full"
+        >
           <FaGoogle className="mr-3 text-2xl"></FaGoogle>
           Signup with google
         </button>

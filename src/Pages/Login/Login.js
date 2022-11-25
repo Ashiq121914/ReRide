@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, googleSignin } = useContext(AuthContext);
 
   // for error in this page
   const [loginError, setLoginError] = useState("");
@@ -30,6 +30,33 @@ const Login = () => {
         console.log(user);
         toast.success("user login success");
         navigate(from, { replace: true });
+      })
+      .catch((error) => setLoginError(error.message));
+  };
+
+  // for sending the user data in the database
+  const saveUser = (name, email, userType) => {
+    const user = { name, email, userType };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+
+  // for google
+  const hangleGoogleSignIn = () => {
+    googleSignin()
+      .then((result) => {
+        const user = result.user;
+        saveUser(user.displayName, user.email, "user");
+        navigate("/");
       })
       .catch((error) => setLoginError(error.message));
   };
@@ -92,7 +119,10 @@ const Login = () => {
           </Link>
         </p>
         <div className="divider">OR</div>
-        <div className="btn btn-success btn-outline w-full">
+        <div
+          onClick={hangleGoogleSignIn}
+          className="btn btn-success btn-outline w-full"
+        >
           Login with google
         </div>
       </div>
