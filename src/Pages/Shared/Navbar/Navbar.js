@@ -15,11 +15,7 @@ const Navbar = () => {
           Blog
         </Link>
       </li>
-      <li>
-        <Link className="text-white text-xl" to="/about">
-          About
-        </Link>
-      </li>
+
       <li>
         <Link className="text-white text-xl" to="/login">
           Login

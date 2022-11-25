@@ -10,13 +10,13 @@ const AboutUs = () => {
             About Us
           </h2>
           <p className="mb-5 text-base text-white  md:text-lg md:text-center">
-            We, Bike Bazaar situated at Malad West, Mumbai, Maharashtra, run our
-            business with experience of supplying quality scooter & bikes. All
-            our bikes & scooters are sourced from highly reputable suppliers and
-            always checked to make sure they achieve the highest standards that
-            we have set ourselves over the years. The success has simply been
-            down to quality vehicles at great prices all backed up by second to
-            none customer care.
+            We, Re-Ride situated at Dhaka, Bangladesh run our business with
+            experience of supplying quality scooter & bikes. All our bikes &
+            scooters are sourced from highly reputable suppliers and always
+            checked to make sure they achieve the highest standards that we have
+            set ourselves over the years. The success has simply been down to
+            quality vehicles at great prices all backed up by second to none
+            customer care.
           </p>
           <div className="mb-10 text-center md:mb-16 lg:mb-20">
             <a
