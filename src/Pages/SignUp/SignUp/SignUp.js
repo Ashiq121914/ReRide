@@ -4,16 +4,24 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
 import toast from "react-hot-toast";
+import useToken from "../../../hooks/useToken";
 
 const SignUp = () => {
   const { createUser, updateUser, googleSignin } = useContext(AuthContext);
   const [signUpError, setSignUpError] = useState("");
+
+  const [createdUserEmail, setCreatedUserEmail] = useState("");
+  const [token] = useToken(createdUserEmail);
 
   // to redirect in the right page
   const location = useLocation();
   const navigate = useNavigate();
 
   const from = location.state?.from?.pathname || "/";
+
+  if (token) {
+    navigate(from, { replace: true });
+  }
 
   const {
     register,
@@ -33,7 +41,6 @@ const SignUp = () => {
         updateUser(userInfo)
           .then(() => {
             saveUser(data.name, data.email, data.userType);
-            navigate("/");
           })
           .catch((error) => setSignUpError(error.message));
       })
@@ -52,7 +59,7 @@ const SignUp = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        setCreatedUserEmail(email);
       });
   };
 
@@ -164,7 +171,7 @@ const SignUp = () => {
           className="btn  btn-success btn-outline w-full"
         >
           <FaGoogle className="mr-3 text-2xl"></FaGoogle>
-          Signup with google
+          SignIn with google
         </button>
       </div>
     </div>

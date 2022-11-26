@@ -12,7 +12,6 @@ const DashboardLayout = () => {
   const [isAdmin] = useAdmin(user?.email);
   const [isSeller] = useSeller(user?.email);
 
-  console.log(user);
   return (
     <div>
       <Navbar></Navbar>
@@ -32,28 +31,28 @@ const DashboardLayout = () => {
             {isAdmin ? (
               <>
                 <li>
-                  <Link to="/dashboard/allusers">All Seller</Link>
+                  <Link to="/dashboard/allseller">All Seller</Link>
                 </li>
                 <li>
-                  <Link to="/dashboard/adddoctor">All buyer</Link>
+                  <Link to="/dashboard/addbuyer">All buyer</Link>
                 </li>
                 <li>
-                  <Link to="/dashboard/adddoctor">Reported product</Link>
+                  <Link to="/dashboard/reportedProduct">Reported product</Link>
                 </li>
               </>
             ) : isSeller ? (
               <>
                 <li>
-                  <Link to="/dashboard/allusers">My Products</Link>
+                  <Link to="/dashboard/myproducts">My Products</Link>
                 </li>
                 <li>
-                  <Link to="/dashboard/adddoctor">Add a product</Link>
+                  <Link to="/dashboard/addaproduct">Add a product</Link>
                 </li>
               </>
             ) : (
               <>
                 <li>
-                  <Link to="/dashboard/adddoctor">My orders</Link>
+                  <Link to="/dashboard/myorders">My orders</Link>
                 </li>
               </>
             )}
