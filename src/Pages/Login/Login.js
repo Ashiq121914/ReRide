@@ -34,32 +34,16 @@ const Login = () => {
       .catch((error) => setLoginError(error.message));
   };
 
-  // for sending the user data in the database
-  const saveUser = (name, email, userType) => {
-    const user = { name, email, userType };
-    fetch("http://localhost:5000/users", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
-  };
+  // // for google
+  // const hangleGoogleSignIn = () => {
+  //   googleSignin()
+  //     .then((result) => {
+  //       const user = result.user;
 
-  // for google
-  const hangleGoogleSignIn = () => {
-    googleSignin()
-      .then((result) => {
-        const user = result.user;
-        saveUser(user.displayName, user.email, "user");
-        navigate("/");
-      })
-      .catch((error) => setLoginError(error.message));
-  };
+  //       navigate("/");
+  //     })
+  //     .catch((error) => setLoginError(error.message));
+  // };
 
   return (
     <div className="h-[800px] flex justify-center items-center">
@@ -118,13 +102,13 @@ const Login = () => {
             create new account
           </Link>
         </p>
-        <div className="divider">OR</div>
+        {/* <div className="divider">OR</div>
         <div
           onClick={hangleGoogleSignIn}
           className="btn btn-success btn-outline w-full"
         >
           Login with google
-        </div>
+        </div> */}
       </div>
     </div>
   );
