@@ -1,6 +1,6 @@
 import React from "react";
 import { MdOutlineVerified } from "react-icons/md";
-const CategoryProductsCard = ({ categoryProduct }) => {
+const CategoryProductsCard = ({ categoryProduct, setProduct }) => {
   const {
     image,
     title,
@@ -36,7 +36,13 @@ const CategoryProductsCard = ({ categoryProduct }) => {
         </p>
 
         <div className="card-actions justify-center">
-          <button className="btn btn-primary">Book Now</button>
+          <label
+            onClick={() => setProduct(categoryProduct)}
+            className="btn btn-primary"
+            htmlFor="booking-modal"
+          >
+            Book Now
+          </label>
         </div>
       </div>
     </div>
