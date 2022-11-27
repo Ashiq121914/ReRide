@@ -55,7 +55,19 @@ const MyOrders = () => {
 
                 <td>{booking.productName}</td>
                 <td>{booking.productPrice}</td>
-                <td className="btn btn-success text-white mt-4">Pay</td>
+                <td>
+                  {booking.productPrice && !booking.paid && (
+                    <Link
+                      className="btn btn-success text-white mt-4"
+                      to={`/dashboard/payment/${booking._id}`}
+                    >
+                      Pay
+                    </Link>
+                  )}
+                  {booking.productPrice && booking.paid && (
+                    <span className="text-green-500">Paid</span>
+                  )}
+                </td>
               </tr>
             ))}
         </table>
