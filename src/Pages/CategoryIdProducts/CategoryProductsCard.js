@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { MdOutlineVerified } from "react-icons/md";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+
 const CategoryProductsCard = ({ categoryProduct, setProduct }) => {
   const { user } = useContext(AuthContext);
   const {
@@ -19,18 +20,8 @@ const CategoryProductsCard = ({ categoryProduct, setProduct }) => {
     seller_phone,
     seller_email,
     description,
+    seller_state,
   } = categoryProduct;
-
-  // getting particular user
-  const { data: users = [], refetch } = useQuery({
-    queryKey: ["users"],
-    queryFn: async () => {
-      const res = await fetch(`http:/localhost:5000/users/${seller_email}`);
-      const data = await res.json();
-      user.push(data.items[0]);
-      return data;
-    },
-  });
 
   // for wishlist
   const handleWishList = (categoryProduct) => {
@@ -90,15 +81,15 @@ const CategoryProductsCard = ({ categoryProduct, setProduct }) => {
         <img src={image} alt="Album" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{title}</h2>
-        <p>{location}</p>
-        <p>{resale_price}</p>
-        <p>{origianal_price}</p>
-        <p>{years_of_use}</p>
-        <p>{post_time}</p>
-        <p className=" mb-5">
-          {seller_name}{" "}
-          {seller_verified && (
+        <h2 className="card-title text-white text-3xl">{title}</h2>
+        <p className="text-white text-xl">Location: {location}</p>
+        <p className="text-white text-xl">Resale Price: {resale_price}</p>
+        <p className="text-white text-xl">Original Price: {origianal_price}</p>
+        <p className="text-white text-xl">Use time: {years_of_use}</p>
+        <p className="text-white text-xl">Time of the post: {post_time}</p>
+        <p className=" mb-5 text-white text-xl">
+          Seller Name: {seller_name}{" "}
+          {seller_state && (
             <MdOutlineVerified className="bg-green-700 inline text-white text-xl ml-1"></MdOutlineVerified>
           )}
         </p>
@@ -116,7 +107,7 @@ const CategoryProductsCard = ({ categoryProduct, setProduct }) => {
           <div>
             <button
               onClick={() => handleWishList(categoryProduct)}
-              className="btn btn-primary mt-3"
+              className="btn btn-primary mt-3 mx-auto"
             >
               Add to Wishlist
             </button>

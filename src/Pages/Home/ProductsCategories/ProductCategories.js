@@ -13,7 +13,7 @@ const ProductCategories = () => {
     },
   });
   return (
-    <div className="my-20">
+    <div id="categories" className="my-20">
       <div>
         <h2 className="text-3xl text-center mb-20">Categories</h2>
       </div>

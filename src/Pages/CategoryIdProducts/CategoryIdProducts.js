@@ -1,11 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import BookingModal from "./BookingModal/BookingModal";
 import CategoryProductsCard from "./CategoryProductsCard";
 
 const CategoryIdProducts = () => {
   const categoryProducts = useLoaderData();
+  console.log(categoryProducts);
 
   // for modal
   const [product, setProduct] = useState(null);

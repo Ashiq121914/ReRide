@@ -41,8 +41,8 @@ const AllSeller = () => {
   };
 
   // for verify
-  const handleVerify = (id) => {
-    fetch(`http://localhost:5000/users/admin/${id}`, {
+  const handleVerify = (email) => {
+    fetch(`http://localhost:5000/users/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -83,7 +83,7 @@ const AllSeller = () => {
                   Delete
                 </td>
                 <td
-                  onClick={() => handleVerify(allSeller._id)}
+                  onClick={() => handleVerify(allSeller.email)}
                   className="btn btn-success text-white mt-2 ml-5"
                 >
                   Verify

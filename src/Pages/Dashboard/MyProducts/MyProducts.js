@@ -56,13 +56,11 @@ const MyProducts = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        if (result.acknowledged) {
-          console.log(result);
+        console.log(result);
 
-          toast.success(
-            `${product.title} is added to advertise page successfully`
-          );
-        }
+        toast.success(
+          `${product.title} is added to advertise page successfully`
+        );
       });
   };
   return (

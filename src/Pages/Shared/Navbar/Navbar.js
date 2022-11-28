@@ -18,6 +18,7 @@ const Navbar = () => {
           Home
         </Link>
       </li>
+
       <li>
         <Link className="text-white text-xl" to="/blog">
           Blog
@@ -73,16 +74,14 @@ const Navbar = () => {
             {menuItems}
           </ul>
         </div>
-        <Link className="w-28 mx-auto lg:ml-2 ">
+        <Link to="/home" className="w-28 mx-auto lg:ml-2 ">
           <img src={logo} alt="" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
-      <div className="navbar-end inline-block text-end">
-        <a className="btn">Get started</a>
-      </div>
+
       <label
         htmlFor="dashboard-drawer"
         tabIndex={2}
