@@ -40,6 +40,23 @@ const AllSeller = () => {
       });
   };
 
+  // for verify
+  const handleVerify = (id) => {
+    fetch(`http://localhost:5000/users/admin/${id}`, {
+      method: "PUT",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          toast.success("Seller verify successfull.");
+          refetch();
+        }
+      });
+  };
+
   return (
     <div>
       <div className="overflow-x-auto">
@@ -49,6 +66,7 @@ const AllSeller = () => {
               <th></th>
               <th>Name</th>
               <th>Email</th>
+              <th></th>
               <th></th>
             </tr>
           </thead>
@@ -60,9 +78,15 @@ const AllSeller = () => {
                 <td>{allSeller.email}</td>
                 <td
                   onClick={() => handleDeleteUser(allSeller)}
-                  className="btn btn-error text-white"
+                  className="btn btn-error text-white mt-2"
                 >
                   Delete
+                </td>
+                <td
+                  onClick={() => handleVerify(allSeller._id)}
+                  className="btn btn-success text-white mt-2 ml-5"
+                >
+                  Verify
                 </td>
               </tr>
             ))}

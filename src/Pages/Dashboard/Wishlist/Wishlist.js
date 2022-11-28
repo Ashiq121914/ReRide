@@ -3,13 +3,13 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 
-const MyOrders = () => {
+const Wishlist = () => {
   const { user } = useContext(AuthContext);
 
-  const url = `http://localhost:5000/bookings?email=${user?.email}`;
+  const url = `http://localhost:5000/wishlists?email=${user?.email}`;
 
-  const { data: bookings = [] } = useQuery({
-    queryKey: ["bookings", user?.email],
+  const { data: wishlists = [] } = useQuery({
+    queryKey: ["wishlists", user?.email],
     queryFn: async () => {
       const res = await fetch(url, {
         headers: {
@@ -23,7 +23,7 @@ const MyOrders = () => {
 
   return (
     <div>
-      <h3 className="text-3xl mb-5">My Orders</h3>
+      <h3 className="text-3xl mb-5">My Wishlist</h3>
       <div className="overflow-x-auto">
         <table className="table w-4/5 mx-auto">
           {/* <!-- head --> */}
@@ -36,16 +36,16 @@ const MyOrders = () => {
               <th>Payment</th>
             </tr>
           </thead>
-          {bookings &&
-            bookings?.map((booking, i) => (
-              <tr key={booking._id}>
+          {wishlists &&
+            wishlists?.map((wishlist, i) => (
+              <tr key={wishlist._id}>
                 <th>{i + 1}</th>
                 <td>
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
                         <img
-                          src={booking.productPhoto}
+                          src={wishlist.image}
                           alt="Avatar Tailwind CSS Component"
                         />
                       </div>
@@ -53,18 +53,18 @@ const MyOrders = () => {
                   </div>
                 </td>
 
-                <td>{booking.productName}</td>
-                <td>{booking.productPrice}</td>
+                <td>{wishlist.title}</td>
+                <td>{wishlist.resale_price}</td>
                 <td>
-                  {booking.productPrice && !booking.paid && (
+                  {wishlist.resale_price && !wishlist.paid && (
                     <Link
                       className="btn btn-success text-white mt-4"
-                      to={`/dashboard/payment/${booking._id}`}
+                      to={`/dashboard/WishlistPayment/${wishlist._id}`}
                     >
                       Pay
                     </Link>
                   )}
-                  {booking.productPrice && booking.paid && (
+                  {wishlist.resale_price && wishlist.paid && (
                     <span className="text-green-500">Paid</span>
                   )}
                 </td>
@@ -76,4 +76,4 @@ const MyOrders = () => {
   );
 };
 
-export default MyOrders;
+export default Wishlist;

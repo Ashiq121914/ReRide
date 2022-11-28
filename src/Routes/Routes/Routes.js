@@ -9,11 +9,15 @@ import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 import Payment from "../../Pages/Dashboard/Payment/Payment";
+import WishlistPayment from "../../Pages/Dashboard/Payment/WishlistPayment";
+import Wishlist from "../../Pages/Dashboard/Wishlist/Wishlist";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
 import SignUp from "../../Pages/SignUp/SignUp/SignUp";
+import AdminRoute from "../AdminRoute.js/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import SellerRoute from "../SellerRoute/SellerRoute";
 
 export const router = createBrowserRouter([
   {
@@ -68,26 +72,52 @@ export const router = createBrowserRouter([
         element: <MyOrders></MyOrders>,
       },
       {
+        path: "/dashboard/wishlist",
+        element: <Wishlist></Wishlist>,
+      },
+      {
         path: "/dashboard/addproduct",
-        element: <AddProduct></AddProduct>,
+        element: (
+          <SellerRoute>
+            <AddProduct></AddProduct>
+          </SellerRoute>
+        ),
       },
       {
         path: "/dashboard/myproducts",
-        element: <MyProducts></MyProducts>,
+        element: (
+          <SellerRoute>
+            <MyProducts></MyProducts>
+          </SellerRoute>
+        ),
       },
       {
         path: "/dashboard/allseller",
-        element: <AllSeller></AllSeller>,
+        element: (
+          <AdminRoute>
+            <AllSeller></AllSeller>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/addbuyer",
-        element: <AllBuyer></AllBuyer>,
+        element: (
+          <AdminRoute>
+            <AllBuyer></AllBuyer>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/payment/:id",
         element: <Payment></Payment>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/bookings/${params.id}`),
+      },
+      {
+        path: "/dashboard/WishlistPayment/:id",
+        element: <WishlistPayment></WishlistPayment>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/wishlists/${params.id}`),
       },
     ],
   },

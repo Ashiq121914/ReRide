@@ -10,7 +10,6 @@ const AdvertisedItems = () => {
       setAdvertisedItems(data.data);
     });
   }, []);
-  console.log(advertisedItems);
 
   return (
     <div className="my-20">
