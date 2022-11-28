@@ -15,15 +15,18 @@ const CheckoutForm = ({ booking }) => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:5000/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
+    fetch(
+      "https://resale-market-server-ashiq121914.vercel.app/create-payment-intent",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
 
-      body: JSON.stringify({ productPrice }),
-    })
+        body: JSON.stringify({ productPrice }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
   }, [productPrice]);
@@ -79,7 +82,7 @@ const CheckoutForm = ({ booking }) => {
         userEmail,
         bookingId: _id,
       };
-      fetch("http://localhost:5000/payments", {
+      fetch("https://resale-market-server-ashiq121914.vercel.app/payments", {
         method: "POST",
         headers: {
           "content-type": "application/json",

@@ -18,15 +18,18 @@ const WishlistCheckoutForm = ({ wishlist }) => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:5000/create-payment-intent-wishlist", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
+    fetch(
+      "https://resale-market-server-ashiq121914.vercel.app/create-payment-intent-wishlist",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
 
-      body: JSON.stringify({ resale_price }),
-    })
+        body: JSON.stringify({ resale_price }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
   }, [resale_price]);
@@ -82,14 +85,17 @@ const WishlistCheckoutForm = ({ wishlist }) => {
         userEmail,
         bookingId: _id,
       };
-      fetch("http://localhost:5000/wishlist-payments", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          authorization: `bearer ${localStorage.getItem("acessToken")}`,
-        },
-        body: JSON.stringify(payment),
-      })
+      fetch(
+        "https://resale-market-server-ashiq121914.vercel.app/wishlist-payments",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `bearer ${localStorage.getItem("acessToken")}`,
+          },
+          body: JSON.stringify(payment),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

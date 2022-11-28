@@ -61,14 +61,17 @@ const AddProduct = () => {
           };
           console.log(product);
           //save doctor info in database
-          fetch("http://localhost:5000/products", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-              authorization: `bearer ${localStorage.getItem("accessToken")}`,
-            },
-            body: JSON.stringify(product),
-          })
+          fetch(
+            "https://resale-market-server-ashiq121914.vercel.app/products",
+            {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+                authorization: `bearer ${localStorage.getItem("accessToken")}`,
+              },
+              body: JSON.stringify(product),
+            }
+          )
             .then((res) => res.json())
             .then((result) => {
               console.log(result);

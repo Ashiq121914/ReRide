@@ -50,7 +50,7 @@ const CategoryProductsCard = ({ categoryProduct, setProduct }) => {
       description,
       userEmail: user.email,
     };
-    fetch("http://localhost:5000/wishlist", {
+    fetch("https://resale-market-server-ashiq121914.vercel.app/wishlist", {
       method: "POST",
       headers: {
         "content-type": "application/json",

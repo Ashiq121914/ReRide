@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import Loading from "../Shared/Loading/Loading";
 
 const AllSeller = () => {
-  const url = `http://localhost:5000/allseller`;
+  const url = `https://resale-market-server-ashiq121914.vercel.app/allseller`;
 
   const {
     data: allSellers = [],
@@ -29,12 +29,15 @@ const AllSeller = () => {
 
   // deleting user
   const handleDeleteUser = (user) => {
-    fetch(`http://localhost:5000/users/${user._id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://resale-market-server-ashiq121914.vercel.app/users/${user._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -47,12 +50,15 @@ const AllSeller = () => {
 
   // for verify
   const handleVerify = (email) => {
-    fetch(`http://localhost:5000/users/admin/${email}`, {
-      method: "PUT",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://resale-market-server-ashiq121914.vercel.app/users/admin/${email}`,
+      {
+        method: "PUT",
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {

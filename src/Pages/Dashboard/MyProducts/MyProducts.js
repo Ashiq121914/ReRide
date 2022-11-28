@@ -9,7 +9,7 @@ import Loading from "../../Shared/Loading/Loading";
 const MyProducts = () => {
   const { user } = useContext(AuthContext);
 
-  const url = `http://localhost:5000/products?email=${user?.email}`;
+  const url = `https://resale-market-server-ashiq121914.vercel.app/products?email=${user?.email}`;
 
   const {
     data: products = [],
@@ -33,12 +33,15 @@ const MyProducts = () => {
 
   // deleting product
   const handleDeleteProduct = (product) => {
-    fetch(`http://localhost:5000/products/${product._id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://resale-market-server-ashiq121914.vercel.app/products/${product._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -50,14 +53,17 @@ const MyProducts = () => {
   };
   // for advertisement
   const handleAdvertiseProduct = (product) => {
-    fetch("http://localhost:5000/advertiseProduct", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify(product),
-    })
+    fetch(
+      "https://resale-market-server-ashiq121914.vercel.app/advertiseProduct",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(product),
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
         console.log(result);

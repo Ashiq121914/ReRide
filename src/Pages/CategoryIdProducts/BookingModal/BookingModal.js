@@ -26,7 +26,7 @@ const BookingModal = ({ product, setProduct }) => {
       productPhoto: product.image,
     };
     form.reset();
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://resale-market-server-ashiq121914.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",

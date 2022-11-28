@@ -6,9 +6,13 @@ const AdvertisedItems = () => {
   const [advertisedItems, setAdvertisedItems] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/advertisedItems").then((data) => {
-      setAdvertisedItems(data.data);
-    });
+    axios
+      .get(
+        "https://resale-market-server-ashiq121914.vercel.app/advertisedItems"
+      )
+      .then((data) => {
+        setAdvertisedItems(data.data);
+      });
   }, []);
 
   return (

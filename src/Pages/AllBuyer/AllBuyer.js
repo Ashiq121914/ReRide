@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import Loading from "../Shared/Loading/Loading";
 
 const AllBuyer = () => {
-  const url = `http://localhost:5000/allbuyer`;
+  const url = `https://resale-market-server-ashiq121914.vercel.app/allbuyer`;
 
   const {
     data: allbuyers = [],
@@ -29,12 +29,15 @@ const AllBuyer = () => {
 
   // deleting user
   const handleDeleteUser = (user) => {
-    fetch(`http://localhost:5000/users/${user._id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://resale-market-server-ashiq121914.vercel.app/users/${user._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

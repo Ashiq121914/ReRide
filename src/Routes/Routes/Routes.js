@@ -53,7 +53,9 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) => {
-          return fetch(`http://localhost:5000/category/${params.id}`);
+          return fetch(
+            `https://resale-market-server-ashiq121914.vercel.app/category/${params.id}`
+          );
         },
       },
     ],
@@ -111,13 +113,17 @@ export const router = createBrowserRouter([
         path: "/dashboard/payment/:id",
         element: <Payment></Payment>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/bookings/${params.id}`),
+          fetch(
+            `https://resale-market-server-ashiq121914.vercel.app/bookings/${params.id}`
+          ),
       },
       {
         path: "/dashboard/WishlistPayment/:id",
         element: <WishlistPayment></WishlistPayment>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/wishlists/${params.id}`),
+          fetch(
+            `https://resale-market-server-ashiq121914.vercel.app/wishlists/${params.id}`
+          ),
       },
     ],
   },
