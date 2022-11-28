@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import toast from "react-hot-toast";
+import Loading from "../Shared/Loading/Loading";
 
 const AllSeller = () => {
   const url = `http://localhost:5000/allseller`;
@@ -21,6 +22,10 @@ const AllSeller = () => {
       return data;
     },
   });
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
 
   // deleting user
   const handleDeleteUser = (user) => {

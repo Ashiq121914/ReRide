@@ -4,6 +4,7 @@ import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
+import Loading from "../../Shared/Loading/Loading";
 
 const MyProducts = () => {
   const { user } = useContext(AuthContext);
@@ -26,6 +27,9 @@ const MyProducts = () => {
       return data;
     },
   });
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
 
   // deleting product
   const handleDeleteProduct = (product) => {

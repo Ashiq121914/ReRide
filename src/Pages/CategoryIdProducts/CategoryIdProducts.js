@@ -7,7 +7,6 @@ import CategoryProductsCard from "./CategoryProductsCard";
 
 const CategoryIdProducts = () => {
   const categoryProducts = useLoaderData();
-  console.log(categoryProducts);
 
   // for modal
   const [product, setProduct] = useState(null);
