@@ -15,7 +15,6 @@ const AddProduct = () => {
   const navigate = useNavigate();
   // image hosting key
   const imageHostKey = process.env.REACT_APP_imgbb_key;
-  console.log(imageHostKey);
 
   //for date picking
   const DatePicker = new Date();

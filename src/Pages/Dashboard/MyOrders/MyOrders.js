@@ -36,40 +36,39 @@ const MyOrders = () => {
               <th>Payment</th>
             </tr>
           </thead>
-          {bookings &&
-            bookings?.map((booking, i) => (
-              <tr key={booking._id}>
-                <th>{i + 1}</th>
-                <td>
-                  <div className="flex items-center space-x-3">
-                    <div className="avatar">
-                      <div className="mask mask-squircle w-12 h-12">
-                        <img
-                          src={booking.productPhoto}
-                          alt="Avatar Tailwind CSS Component"
-                        />
-                      </div>
+          {bookings?.map((booking, i) => (
+            <tr key={booking._id}>
+              <th>{i + 1}</th>
+              <td>
+                <div className="flex items-center space-x-3">
+                  <div className="avatar">
+                    <div className="mask mask-squircle w-12 h-12">
+                      <img
+                        src={booking.productPhoto}
+                        alt="Avatar Tailwind CSS Component"
+                      />
                     </div>
                   </div>
-                </td>
+                </div>
+              </td>
 
-                <td>{booking.productName}</td>
-                <td>{booking.productPrice}</td>
-                <td>
-                  {booking.productPrice && !booking.paid && (
-                    <Link
-                      className="btn btn-success text-white mt-4"
-                      to={`/dashboard/payment/${booking._id}`}
-                    >
-                      Pay
-                    </Link>
-                  )}
-                  {booking.productPrice && booking.paid && (
-                    <span className="text-green-500">Paid</span>
-                  )}
-                </td>
-              </tr>
-            ))}
+              <td>{booking.productName}</td>
+              <td>{booking.productPrice}</td>
+              <td>
+                {booking?.productPrice && !booking.paid && (
+                  <Link
+                    className="btn btn-success text-white mt-4"
+                    to={`/dashboard/payment/${booking._id}`}
+                  >
+                    Pay
+                  </Link>
+                )}
+                {booking?.productPrice && booking.paid && (
+                  <span className="text-green-500">Paid</span>
+                )}
+              </td>
+            </tr>
+          ))}
         </table>
       </div>
     </div>

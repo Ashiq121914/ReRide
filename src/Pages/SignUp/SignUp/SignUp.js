@@ -68,7 +68,10 @@ const SignUp = () => {
     googleSignin()
       .then((result) => {
         const user = result.user;
-        saveUser(user.displayName, user.email, "user");
+        const type = "user";
+        saveUser(user.displayName, user.email, type);
+        console.log(result);
+
         navigate("/");
       })
       .catch((error) => setSignUpError(error.message));

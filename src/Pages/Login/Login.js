@@ -47,7 +47,7 @@ const Login = () => {
   //   googleSignin()
   //     .then((result) => {
   //       const user = result.user;
-
+  //       setLoginUserEmail(user.email);
   //       navigate("/");
   //     })
   //     .catch((error) => setLoginError(error.message));
@@ -110,8 +110,8 @@ const Login = () => {
             create new account
           </Link>
         </p>
-        {/* <div className="divider">OR</div>
-        <div
+        {/* <div className="divider">OR</div> */}
+        {/* <div
           onClick={hangleGoogleSignIn}
           className="btn btn-success btn-outline w-full"
         >

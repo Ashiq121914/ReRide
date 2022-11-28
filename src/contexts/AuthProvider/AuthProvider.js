@@ -20,6 +20,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   // for current user
   const [user, setUser] = useState(null);
+
   //for loading problem of the private route
   const [loading, setLoading] = useState(true);
 

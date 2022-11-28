@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { MdOutlineVerified } from "react-icons/md";
@@ -13,13 +12,8 @@ const CategoryProductsCard = ({ categoryProduct, setProduct }) => {
     resale_price,
     origianal_price,
     years_of_use,
-    product_condition,
     post_time,
     seller_name,
-    seller_verified,
-    seller_phone,
-    seller_email,
-    description,
     seller_state,
   } = categoryProduct;
 

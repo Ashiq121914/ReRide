@@ -3,13 +3,10 @@ import React from "react";
 const AdvertisedItemCard = ({ advertisedItem }) => {
   const {
     image,
-    location,
+
     resale_price,
-    seller_name,
+
     title,
-    original_price,
-    post_time,
-    product_condition,
   } = advertisedItem;
   return (
     <>
