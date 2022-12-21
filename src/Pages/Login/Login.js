@@ -38,6 +38,7 @@ const Login = () => {
         console.log(user);
         setLoginUserEmail(data.email);
         toast.success("user login success");
+        navigate(from, { replace: true });
       })
       .catch((error) => setLoginError(error.message));
   };

@@ -11,7 +11,7 @@ const AdvertisedItemCard = ({ advertisedItem }) => {
   return (
     <>
       {advertisedItem.advertised && (
-        <div className="card w-80 bg-base-100 shadow-xl">
+        <div className="card w-80 bg-base-100 shadow-2xl shadow-blue-500/50">
           <figure>
             <img src={image} alt="Shoes" />
           </figure>

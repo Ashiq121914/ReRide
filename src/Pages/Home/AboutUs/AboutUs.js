@@ -3,7 +3,7 @@ import img from "../../../assets/2DYSWHK.jpg";
 
 const AboutUs = () => {
   return (
-    <div className="relative flex flex-col-reverse py-16 lg:py-0 lg:flex-col w-4/5 mx-auto shadow-xl ">
+    <div className="relative flex flex-col-reverse py-16 lg:py-0 lg:flex-col w-4/5 mx-auto shadow-xl shadow-blue-500/50 mt-56">
       <div className="w-full max-w-xl px-4 mx-auto md:px-0 lg:px-8 lg:py-20 lg:max-w-screen-xl">
         <div className="mb-0 lg:max-w-lg lg:pr-8 xl:pr-6">
           <h2 className="mb-5 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none md:text-center">

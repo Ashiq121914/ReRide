@@ -3,7 +3,7 @@ import logo from "../../../assets/logo.png";
 
 const Footer = () => {
   return (
-    <div className="px-4 pt-16 mx-auto">
+    <div className="px-4 pt-16 mx-auto mt-20">
       <div className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4 ">
         <div className="sm:col-span-2  sm:text-center lg:text-left">
           <a href="/" title="Company" className="inline-flex items-center">

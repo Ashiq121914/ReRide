@@ -23,7 +23,9 @@ const MyOrders = () => {
 
   return (
     <div>
-      <h3 className="text-3xl mb-5">My Orders</h3>
+      <h3 className="text-3xl mb-5 text-white underline text-center mt-10">
+        My Orders
+      </h3>
       <div className="overflow-x-auto">
         <table className="table w-4/5 mx-auto">
           {/* <!-- head --> */}

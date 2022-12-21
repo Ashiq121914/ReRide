@@ -5,7 +5,7 @@ const ProductCategoryCard = ({ category }) => {
   const { category_name, image, category_id } = category;
   return (
     <Link to={`/category/${category_id}`}>
-      <div className="card  glass h-80">
+      <div className="card  glass h-80 shadow-2xl shadow-blue-500/50">
         <figure>
           <img src={image} alt="car!" />
         </figure>

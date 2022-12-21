@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 
@@ -14,35 +14,38 @@ const Navbar = () => {
   const menuItems = (
     <React.Fragment>
       <li>
-        <Link className="text-white text-xl" to="/home">
+        <NavLink className="text-white text-xl rounded-2xl" to="/home">
           Home
-        </Link>
+        </NavLink>
       </li>
 
       <li>
-        <Link className="text-white text-xl" to="/blog">
+        <NavLink className="text-white text-xl rounded-2xl" to="/blog">
           Blog
-        </Link>
+        </NavLink>
       </li>
 
       {user?.uid ? (
         <>
           <li>
-            <Link className="text-white text-xl" to="/dashboard">
+            <NavLink className="text-white text-xl rounded-2xl" to="/dashboard">
               Dashboard
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <button className="text-white text-xl" onClick={handleLogOut}>
+            <button
+              className="text-white text-xl rounded-2xl"
+              onClick={handleLogOut}
+            >
               Signout
             </button>
           </li>
         </>
       ) : (
         <li>
-          <Link className="text-white text-xl" to="/login">
+          <NavLink className="text-white text-xl rounded-2xl" to="/login">
             Login
-          </Link>
+          </NavLink>
         </li>
       )}
     </React.Fragment>
@@ -69,13 +72,13 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box "
           >
             {menuItems}
           </ul>
         </div>
-        <Link to="/home" className="w-28 mx-auto lg:ml-2 ">
-          <img src={logo} alt="" />
+        <Link to="/home" className="w-24 mx-auto lg:ml-2 ">
+          <img className="rounded-full" src={logo} alt="" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

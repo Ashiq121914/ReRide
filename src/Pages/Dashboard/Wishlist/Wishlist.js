@@ -36,40 +36,39 @@ const Wishlist = () => {
               <th>Payment</th>
             </tr>
           </thead>
-          {wishlists &&
-            wishlists?.map((wishlist, i) => (
-              <tr key={wishlist._id}>
-                <th>{i + 1}</th>
-                <td>
-                  <div className="flex items-center space-x-3">
-                    <div className="avatar">
-                      <div className="mask mask-squircle w-12 h-12">
-                        <img
-                          src={wishlist.image}
-                          alt="Avatar Tailwind CSS Component"
-                        />
-                      </div>
+          {wishlists.map((wishlist, i) => (
+            <tr key={wishlist._id}>
+              <th>{i + 1}</th>
+              <td>
+                <div className="flex items-center space-x-3">
+                  <div className="avatar">
+                    <div className="mask mask-squircle w-12 h-12">
+                      <img
+                        src={wishlist.image}
+                        alt="Avatar Tailwind CSS Component"
+                      />
                     </div>
                   </div>
-                </td>
+                </div>
+              </td>
 
-                <td>{wishlist.title}</td>
-                <td>{wishlist.resale_price}</td>
-                <td>
-                  {wishlist.resale_price && !wishlist.paid && (
-                    <Link
-                      className="btn btn-success text-white mt-4"
-                      to={`/dashboard/WishlistPayment/${wishlist._id}`}
-                    >
-                      Pay
-                    </Link>
-                  )}
-                  {wishlist.resale_price && wishlist.paid && (
-                    <span className="text-green-500">Paid</span>
-                  )}
-                </td>
-              </tr>
-            ))}
+              <td>{wishlist.title}</td>
+              <td>{wishlist.resale_price}</td>
+              <td>
+                {wishlist.resale_price && !wishlist.paid && (
+                  <Link
+                    className="btn btn-success text-white mt-4"
+                    to={`/dashboard/WishlistPayment/${wishlist._id}`}
+                  >
+                    Pay
+                  </Link>
+                )}
+                {wishlist.resale_price && wishlist.paid && (
+                  <span className="text-green-500">Paid</span>
+                )}
+              </td>
+            </tr>
+          ))}
         </table>
       </div>
     </div>

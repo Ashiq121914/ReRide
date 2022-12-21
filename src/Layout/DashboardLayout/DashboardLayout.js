@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import useAdmin from "../../hooks/useAdmin";
 import useSeller from "../../hooks/useSeller";
@@ -31,28 +31,58 @@ const DashboardLayout = () => {
             {isAdmin ? (
               <>
                 <li>
-                  <Link to="/dashboard/allseller">All Seller</Link>
+                  <NavLink
+                    className="text-white text-lg"
+                    to="/dashboard/allseller"
+                  >
+                    All Seller
+                  </NavLink>
                 </li>
                 <li>
-                  <Link to="/dashboard/addbuyer">All buyer</Link>
+                  <NavLink
+                    className="text-white text-lg"
+                    to="/dashboard/addbuyer"
+                  >
+                    All buyer
+                  </NavLink>
                 </li>
               </>
             ) : isSeller ? (
               <>
                 <li>
-                  <Link to="/dashboard/myproducts">My Products</Link>
+                  <NavLink
+                    className="text-white text-lg"
+                    to="/dashboard/myproducts"
+                  >
+                    My Products
+                  </NavLink>
                 </li>
                 <li>
-                  <Link to="/dashboard/addproduct">Add a product</Link>
+                  <NavLink
+                    className="text-white text-lg"
+                    to="/dashboard/addproduct"
+                  >
+                    Add a product
+                  </NavLink>
                 </li>
               </>
             ) : (
               <>
                 <li>
-                  <Link to="/dashboard/myorders">My orders</Link>
+                  <NavLink
+                    className="text-white text-lg"
+                    to="/dashboard/myorders"
+                  >
+                    My orders
+                  </NavLink>
                 </li>
                 <li>
-                  <Link to="/dashboard/wishlist">Wishlist</Link>
+                  <NavLink
+                    className="text-white text-lg"
+                    to="/dashboard/wishlist"
+                  >
+                    Wishlist
+                  </NavLink>
                 </li>
               </>
             )}
